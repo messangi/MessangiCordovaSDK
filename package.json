@@ -1,0 +1,27 @@
+{
+  "name": "cordova-plugin-messangi",
+  "version": "3.0.0",
+  "description": "Cool plugin description",
+  "cordova": {
+    "id": "com.ogangi.messangi",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/messangi/MessangiCordovaSDK.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "jtorres",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/messangi/MessangiCordovaSDK/issues"
+  },
+  "homepage": "https://github.com/messangi/MessangiCordovaSDK#readme"
+}
