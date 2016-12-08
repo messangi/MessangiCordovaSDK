@@ -24,7 +24,7 @@ Primero se debe agregar la plataforma al proyecto **PhoneGap/Cordova**
 ```
 En xCode hacer click sobre **open another project** y luego buscar el proyecto generado anteriormente, luego ir al directorio **platforms > ios** y abrir el que tenga la extensión **.xcworkspace**
 
-Una vez abierto el proyecto en xCode, seleccionar la base del proyecto ( El nombre del proyecto en el panel izquierdo ), en la sección derecha, está seleccionada la pestaña **General**, en esta pestaña se encuentra el **Bundle Identifier**, este es el mismo referenciado desde el archivo **config.xml** es recomendable no modificar esto en xCode sino en el **config.xml** y luego hacer nuevamente el comando **ionic build ios**. En esta pestaña también está la información de signin y deploy.
+Una vez abierto el proyecto en xCode, seleccionar la base del proyecto ( El nombre del proyecto en el panel izquierdo ), en la sección derecha, está seleccionada la pestaña **General**, en esta pestaña se encuentra el **Bundle Identifier**, este es el mismo referenciado desde el archivo **config.xml** es recomendable no modificar esto en xCode sino en el **config.xml** y luego hacer nuevamente el comando **cordova build ios**. En esta pestaña también está la información de signin y deploy.
 
 En la pestaña **Capabilities** deben encenderse por lo menos las siguientes: 
 
@@ -65,13 +65,13 @@ Luego de tener el proyecto base funcionando correctamente, ir al directorio base
 
 |Variables|Description|Required|Platform|
 |---------|-----------|--------|--------|
-|APP_NAME |Esta variable es enviada a usted por el equipo de Ogangi|SI|ANDROID - iOS|
-|PUBLIC_KEY|Esta variable es enviada a usted por el equipo de Ogangi|SI|ANDROID - iOS|
-|PRIVATE_KEY|Esta variable es enviada a usted por el equipo de Ogangi|SI|ANDROID - iOS|
-|GCM_API_KEY|Esta variable debe conseguirla mediante GCM* y solicitar su registro mediante un email a Support@ogangi.com|SI|ANDROID|
-|GCM_PROJECT_NUMBER|Esta variable debe conseguirla mediante GCM* y solicitar su registro mediante un email a Support@ogangi.com|SI|ANDROID|
-|MMC_URL|Esta variable es enviada a usted por el equipo de Ogangi|NO|ANDROID - iOS|
-|MMC_INSTANCE_ID|Esta variable es enviada a usted por el equipo de Ogangi|NO|ANDROID - iOS|
+|APP_NAME |Esta variable es enviada a usted por el equipo de Messangi|SI|ANDROID - iOS|
+|PUBLIC_KEY|Esta variable es enviada a usted por el equipo de Messangi|SI|ANDROID - iOS|
+|PRIVATE_KEY|Esta variable es enviada a usted por el equipo de Messangi|SI|ANDROID - iOS|
+|GCM_API_KEY|Esta variable debe conseguirla mediante GCM* y solicitar su registro mediante un email a [support@messangi.com](support@ogangi.com)|SI|ANDROID|
+|GCM_PROJECT_NUMBER|Esta variable debe conseguirla mediante GCM* y solicitar su registro mediante un email a [support@messangi.com](support@ogangi.com)|SI|ANDROID|
+|MMC_URL|Esta variable es enviada a usted por el equipo de Messangi|NO|ANDROID - iOS|
+|MMC_INSTANCE_ID|Esta variable es enviada a usted por el equipo de Messangi|NO|ANDROID - iOS|
 
 * Variables conseguidas en la sección **Certificados** subsección **android**
 
