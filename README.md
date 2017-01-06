@@ -59,17 +59,10 @@ Now from **Android Studio** you can open the project created in **<project_folde
 ----------
 ## Starting with the plugin
 
-First it's needed to clone the plugin somewhere you wish. 
-
-```shell
-	$>git clone <user>@git.ogangi.com:/usr/local/gitroot/MessangiCordovaSDK.git
-```
-
 After having base project set and working properly, go to the base project directory and include the plugin adding the neccesary variables for Messangi.
 
 ```shell
-	$>cd <path_to_project>
-	$>ionic plugin add <path_to_Messangi_plugin> --variable APP_NAME=<Messangi Application Name> --variable PUBLIC_KEY=<Messangi Public Key or Client ID> --variable PRIVATE_KEY=<Messangi Private Key> --variable GCM_API_KEY=<Gcm Api Key> --variable GCM_PROJECT_NUMBER=<GCM Project Number>
+	$>cordova plugin add cordova-plugin-messangi --variable APP_NAME=<Messangi Application Name> --variable PUBLIC_KEY=<Messangi Public Key or Client ID> --variable PRIVATE_KEY=<Messangi Private Key> --variable GCM_API_KEY=<Gcm Api Key> --variable GCM_PROJECT_NUMBER=<GCM Project Number>
 ```
 
 |Variables|Description|Required|Platform|
