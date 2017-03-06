@@ -67,13 +67,13 @@ After having base project set and working properly, go to the base project direc
 
 |Variables|Description|Required|Platform|
 |---------|-----------|--------|--------|
-|APP_NAME |This variable is sent to you from the Ogangi Team|YES|ANDROID - iOS|
-|PUBLIC_KEY|This variable is sent to you from the Ogangi Team|YES|ANDROID - iOS|
-|PRIVATE_KEY|This variable is sent to you from the Ogangi Team|YES|ANDROID - iOS|
-|GCM_API_KEY|This variable is found with GCM* and you have to request your registration through emailing to support@ogangi.com|YES|ANDROID|
-|GCM_PROJECT_NUMBER|This variable is found with GCM* and you have to request your registration through emailing to support@ogangi.com|YES|ANDROID|
-|MMC_URL|This variable is sent to you from the Ogangi Team|NO|ANDROID - iOS|
-|MMC_INSTANCE_ID|This variable is sent to you from the Ogangi Team|NO|ANDROID - iOS|
+|APP_NAME |This variable is sent to you from the Messangi Team|YES|ANDROID - iOS|
+|PUBLIC_KEY|This variable is sent to you from the Messangi Team|YES|ANDROID - iOS|
+|PRIVATE_KEY|This variable is sent to you from the Messangi Team|YES|ANDROID - iOS|
+|GCM_API_KEY|This variable is found with GCM* and you have to request your registration through emailing to support team|YES|ANDROID|
+|GCM_PROJECT_NUMBER|This variable is found with GCM* and you have to request your registration through emailing to support team|YES|ANDROID|
+|MMC_URL|This variable is sent to you from the Messangi Team|NO|ANDROID - iOS|
+|MMC_INSTANCE_ID|This variable is sent to you from the Messangi Team|NO|ANDROID - iOS|
 
 * Variables found in **Certificates** section, **Android** subsection.
 
@@ -100,4 +100,4 @@ After having base project set and working properly, go to the base project direc
     - Ultimate API
 
 ### Version
-3.0.0
+3.0.2
