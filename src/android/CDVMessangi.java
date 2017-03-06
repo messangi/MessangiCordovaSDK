@@ -52,6 +52,17 @@ public class CDVMessangi extends CordovaPlugin {
     @Override
     public void pluginInitialize() {
         context = this.cordova.getActivity().getApplicationContext();
+        Messangi.getInstance().loadCredentials(context);
+
+        // Subscription manager
+        Resources res = context.getResources();
+        String url = res.getString(com.ogangi.messangi.android.sdk.R.string.subscription_url);
+        String instanceID = res.getString(com.ogangi.messangi.android.sdk.R.string.subscription_id);
+
+        if(!url.equals("null") && !instanceID.equals("null")){
+            Messangi.getInstance().loadSubscriptionCredentials(context);
+        }
+        
         if(!cordova.hasPermission(COARSE_LOCATION) || !cordova.hasPermission(FINE_LOCATION)){
             String [] location_permissions = {
                     COARSE_LOCATION,
@@ -205,17 +216,6 @@ public class CDVMessangi extends CordovaPlugin {
         final Activity activity = this.cordova.getActivity();
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
-                Messangi.getInstance().loadCredentials(context);
-
-                // Subscription manager
-                Resources res = context.getResources();
-                String url = res.getString(com.ogangi.messangi.android.sdk.R.string.subscription_url);
-                String instanceID = res.getString(com.ogangi.messangi.android.sdk.R.string.subscription_id);
-
-                if(!url.equals("null") && !instanceID.equals("null")){
-                    Messangi.getInstance().loadSubscriptionCredentials(context);
-                }
-
                 Messangi.getInstance().addMessangiListener(new MessangiListener() {
                     @Override
                     public void pushReceived(MessageVO messageVO, Workspace workspace) {

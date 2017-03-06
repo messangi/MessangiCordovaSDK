@@ -2,3 +2,4 @@
 .DS_Store
 #Ignore Visual Studio Code Settings
 .vscode
+npm-debug.log
