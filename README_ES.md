@@ -89,14 +89,10 @@ Luego de tener el proyecto base funcionando correctamente, ir al directorio base
 ### Android
  - messangisdk  (Se instala automáticamente la versión que se descarga de este repositorio, se puede actualizar por una mas nueva si se desea)
 
-## 
-
-##TODO
+### TODO
  - General:
     - Listas de suscripción
     - Revisar y limpiar todos los comentarios
-    - Documentacion
-    - API final
 
 ### Versión
 3.0.0
