@@ -3,3 +3,4 @@
 #Ignore Visual Studio Code Settings
 .vscode
 npm-debug.log
+node_modules

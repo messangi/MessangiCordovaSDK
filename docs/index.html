@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Messangi Cordova SDK Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.flatly.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Messangi Cordova SDK</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="Message.html">Message</a></li><li><a href="Location.html">Location</a></li><li><a href="Workspace.html">Workspace</a></li><li><a href="Geofence.html">Geofence</a></li><li><a href="Beacon.html">Beacon</a></li><li><a href="Messangi.html">Messangi</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="global.html">Global</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>Messangi Cordova SDK</h1><p>Messangi Cordova SDK works as a wrapper to MessangiSDK for iOS and Android and is based upon the official Cordova documentation to generate native plugins in the platform https://cordova.apache.org/docs/en/6.0.0/guide/hybrid/plugins/index.html</p>
+<hr>
+<h2>Platform settings</h2><h3>Certificates</h3><h4>iOS</h4><p>In iOS to be able to get push notifications you have to follow a long and strict steps list, explained in the following link: <a href="https://www.messangi.com/documentation/doku.php?id=sdk:ios_certs">iOS Certificates</a></p>
+<p>The certificates are <strong>mandatory</strong> to enable the Push Notifications feature in iOS, so you have to be careful to generate them properly.</p>
+<h4>Android</h4><p>In order to get the credentials in Google Cloud Messaging (GCM), you must follow our guide in this link: <a href="https://www.messangi.com/documentation/doku.php?id=sdk:android_keys">GCM - Credentials</a> </p>
+<p>The credentials in GCM are <strong>mandatory</strong> to enable the Push Notifications feature in Android, so you have to be careful to generate them properly.</p>
+<h3>Plataforms</h3><h4>iOS</h4><p>First you have to add the platform to the <strong>PhoneGap/Cordova</strong> project </p>
+<pre class="prettyprint source"><code>    cordova platform add ios</code></pre><p>In Xcode click on <strong>Open another project</strong> and then look for the previously generated project, then go to <strong>Platforms &gt; iOS</strong> directory and open the one with <strong>.xcworkspace</strong> extension. </p>
+<p>Once opened the project in Xcode, select the project root (project name in the left panel), in the right section, it's chosen the tab <strong>General</strong>, in that tab is located the <strong>Bundle Identifier</strong>, this is the same referenced from the <strong>config.xml</strong> file, it's suggestable not to modify that in Xcode but in the file itself and then run again the command <strong>ionic build ios</strong>. In that tab is also the information for signing and deployment.</p>
+<p>In the <strong>Capabilities</strong> tab must be checked at least the following:</p>
+<ul>
+<li>Push Notifications</li>
+<li>Background Modes<ul>
+<li>Location updates</li>
+<li>Uses Bluetooth LE accessories</li>
+<li>Background fetch</li>
+<li>Remote notifications</li>
+</ul>
+</li>
+<li>Associated Domains</li>
+</ul>
+<p><strong>Note:</strong> Any error shown in this point could be caused by any error in certificate generation. </p>
+<p>In the <em>AppDelegate+notification.m<strong> file is automatically overwritten everything that official documentation asks to overwrite or add from </strong>AppDelegate<strong>, then there is no need to modify it unless you wish to change any base behavior; the original </strong>AppDelegate*</em> file should not be modified (it's so to allow the operation together other plugins).</p>
+<h4>ANDROID</h4><p>It's suggested to use <strong>Android Studio</strong> as the new offcial Android development IDE. Cordova is compatible from version 4 with Android Studio.</p>
+<p>First you have to add the platform to the <strong>PhoneGap/Cordova</strong> project.</p>
+<pre class="prettyprint source"><code>    cordova platform add android</code></pre><p>Now from <strong>Android Studio</strong> you can open the project created in <strong><project_folder>/platforms/android/</strong></p>
+<hr>
+<h2>Starting with the plugin</h2><p>After having base project set and working properly, go to the base project directory and include the plugin adding the neccesary variables for Messangi.</p>
+<pre class="prettyprint source lang-shell"><code>    $>cordova plugin add cordova-plugin-messangi --variable APP_NAME=&lt;Messangi Application Name> --variable PUBLIC_KEY=&lt;Messangi Public Key or Client ID> --variable PRIVATE_KEY=&lt;Messangi Private Key> --variable GCM_API_KEY=&lt;Gcm Api Key> --variable GCM_PROJECT_NUMBER=&lt;GCM Project Number></code></pre><table>
+<thead>
+<tr>
+<th>Variables</th>
+<th>Description</th>
+<th>Required</th>
+<th>Platform</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP_NAME</td>
+<td>This variable is sent to you from the Messangi Team</td>
+<td>YES</td>
+<td>ANDROID - iOS</td>
+</tr>
+<tr>
+<td>PUBLIC_KEY</td>
+<td>This variable is sent to you from the Messangi Team</td>
+<td>YES</td>
+<td>ANDROID - iOS</td>
+</tr>
+<tr>
+<td>PRIVATE_KEY</td>
+<td>This variable is sent to you from the Messangi Team</td>
+<td>YES</td>
+<td>ANDROID - iOS</td>
+</tr>
+<tr>
+<td>GCM_API_KEY</td>
+<td>This variable is found with GCM* and you have to request your registration through emailing to support team</td>
+<td>YES</td>
+<td>ANDROID</td>
+</tr>
+<tr>
+<td>GCM_PROJECT_NUMBER</td>
+<td>This variable is found with GCM* and you have to request your registration through emailing to support team</td>
+<td>YES</td>
+<td>ANDROID</td>
+</tr>
+<tr>
+<td>MMC_URL</td>
+<td>This variable is sent to you from the Messangi Team</td>
+<td>NO</td>
+<td>ANDROID - iOS</td>
+</tr>
+<tr>
+<td>MMC_INSTANCE_ID</td>
+<td>This variable is sent to you from the Messangi Team</td>
+<td>NO</td>
+<td>ANDROID - iOS</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Variables found in <strong>Certificates</strong> section, <strong>Android</strong> subsection.</li>
+</ul>
+<hr>
+<h2>Libraries</h2><h3>iOS</h3><ul>
+<li>Messangi.Framework (it's automatically installed with the version downloaded from this repository, it can be updated with a newer later if you wish).</li>
+</ul>
+<h3>Android</h3><ul>
+<li>messangisdk  (it's automatically installed with the version downloaded from this repository, it can be updated with a newer later if you wish)</li>
+</ul>
+<p>##TODO</p>
+<ul>
+<li>General:<ul>
+<li>Subscription lists</li>
+<li>Check and clean comments</li>
+</ul>
+</li>
+</ul>
+<h3>Version</h3><p>3.0.2</p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

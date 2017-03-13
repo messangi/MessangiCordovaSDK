@@ -1,0 +1,37 @@
+{
+    "tags": {
+        "allowUnknownTags": false
+    },
+    "source": {
+        "include": ["./www","./README.md"],
+        // "includePattern": ".(js|md|json)$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "opts": {
+        "template": "node_modules/ink-docstrap/template",
+        "encoding": "utf8",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true
+    },
+    "templates": {
+        "systemName"            : "Messangi Cordova SDK",
+        "footer"                : "",
+        "copyright"             : "",
+        "includeDate"           : false,
+        "navType"               : "inline",
+        "theme"                 : "flatly",
+        "linenums"              : false,
+        // "collapseSymbols"       : "{boolean}",
+        // "inverseNav"            : "{boolean}",
+        "outputSourceFiles"     : false ,
+        "outputSourcePath"      : false,
+        // "dateFormat"            : "{string}",
+        // "syntaxTheme"           : "{string}",
+        "sort"                  : false,
+        "search"                : true 
+    }
+}

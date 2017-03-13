@@ -78,10 +78,6 @@ After having base project set and working properly, go to the base project direc
 * Variables found in **Certificates** section, **Android** subsection.
 
 ----------
-## API
-#[TODO]
-
-----------
 ## Libraries
 
 ### iOS
@@ -90,14 +86,10 @@ After having base project set and working properly, go to the base project direc
 ### Android
  - messangisdk  (it's automatically installed with the version downloaded from this repository, it can be updated with a newer later if you wish)
 
-## 
-
-##TODO
+## TODO
  - General:
     - Subscription lists
     - Check and clean comments
-    - Documentation
-    - Ultimate API
 
-### Version
-3.0.2
+## Version
+3.0.3
