@@ -5,7 +5,7 @@
  * @constructor
  * @param  {string} id - message unique identifier
  * @param  {string} blastId - blast identifier aqssociated with this message, if any
- * @param  {string} type - Message type (PUSH)
+ * @param  {string} type - Message type (PUSH, GEOFENCE, BEACON)
  * @param  {string} from - Message sender
  * @param  {string} to - Message recipient
  * @param  {string} subject - Title for the message
