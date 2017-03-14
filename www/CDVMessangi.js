@@ -187,27 +187,27 @@ Messangi.prototype.getCurrentLocation = function(success, error){
 /**
  * Show auto registration dialog
  * @param  {registerCallback} success - Method callback if registration is successful
- * @param  {errorCallback} error - Method callback if some error has occurred
- * @param {string} [token] - If phone number is not provided by prompt directly
+ * @param  {errorCallback} error - Method callback if an error has occurred
+ * @param {string} [token] - If phone number is not provided then a prompt is displayed
  */
 Messangi.prototype.register = function(success, error, token) {
   cordova.exec(success, error, "CDVMessangi", "register", [token]);
 }
 
 /**
- * Register the User with Token in Messangi Backend
- * @param  {registerWithTokenCallback} success - Method callback if registration is successful
- * @param  {errorCallback} error - Method callback if some error has occurred
- * @param {string} [token] - If phone number is not provided by prompt directly
+ * Register the User with Token in the Messangi Backend
+ * @param  {registerWithTokenCallback} success - Method callback if the registration is successful
+ * @param  {errorCallback} error - Method callback if an error has occurred
+ * @param {string} [token] - If phone number is not provided then a prompt is displayed
  */
 Messangi.prototype.registerWithToken = function(success, error, token) {
   cordova.exec(success, error, "CDVMessangi", "register", [token]);
 }
 
 /**
- * First Step in custom registration process, sends phone number to Messangi Server
- * @param  {registerWithPhoneCallback} success - Method to invoke if phone user is successfully sent to Messangi Server
- * @param  {errorCallback} error - Method to invoke if some error has occurred
+ * First Step in a custom registration process, sends phone number to Messangi Server
+ * @param  {registerWithPhoneCallback} success - Method to invoke if the phone user is successfully sent to the Messangi Server
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @param  {string} phone - Phone number to register
  * @return {void}
  */
@@ -216,10 +216,10 @@ Messangi.prototype.registerWithPhone = function(success, error, phone) {
 };
 
 /**
- * Second step in custom registration process, sends validation code arrived from SMS to Messangi to validate user registration
- * @param  {activatePhoneWithCodeCallback} success - Invoke if code validation is successfully sent to Messangi.
- * @param  {errorCallback} error - Method to invoke if some error has occurred
- * @param  {string} code - The code number arrived in SMS
+ * Second step in custom registration process, sends the validation code arrived via SMS to Messangi to validate the user registration
+ * @param  {activatePhoneWithCodeCallback} success - Invoked if code validation is successfully sent to Messangi.
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
+ * @param  {string} code - The code number arrived via SMS
  * @return {void}
  */
 Messangi.prototype.activatePhoneWithCode = function(success, error, code){
@@ -228,8 +228,8 @@ Messangi.prototype.activatePhoneWithCode = function(success, error, code){
 
 /**
  * Lists all Workspaces available to join
- * @param  {getAvailableWorkspacesCallback} success - Method to invoke in successful execution
- * @param  {errorCallback} error - Method to invoke if some error has occurred
+ * @param  {getAvailableWorkspacesCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @return {void}
  */
 Messangi.prototype.getAvailableWorkspaces = function(success, error){
@@ -237,9 +237,9 @@ Messangi.prototype.getAvailableWorkspaces = function(success, error){
 };
 
 /**
- * Lists all Workspaces subscribed by the user
- * @param  {getSubscribedWorkspacesCallback} success - Method to invoke in successful execution
- * @param  {errorCallback} error - Method to invoke if some error has occurred
+ * Lists all Workspaces to which the user is subscribed
+ * @param  {getSubscribedWorkspacesCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @return {void}
  */
 Messangi.prototype.getSubscribedWorkspaces = function(success, error){
@@ -247,9 +247,9 @@ Messangi.prototype.getSubscribedWorkspaces = function(success, error){
 };
 
 /**
- * Gets Default Workspace
- * @param  {getDefaultWorkspaceCallback} success - Method to invoke in successful execution
- * @param  {errorCallback} error - Method to invoke if some error has occurred
+ * Gets the Default Workspace
+ * @param  {getDefaultWorkspaceCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @return {void}
  */
 Messangi.prototype.getDefaultWorkspace = function(success, error){
@@ -258,8 +258,8 @@ Messangi.prototype.getDefaultWorkspace = function(success, error){
 
 /**
  * Gets a Workspace using ClientID
- * @param {getWorkspaceCallback} success - Method to invoke in successful execution
- * @param {errorCallback} error - Method to invoke if some error is occurred
+ * @param {getWorkspaceCallback} success - Method to invoke after successful execution
+ * @param {errorCallback} error - Method to invoke if an error has occurred
  * @param {string} clientId - The clientId of workspace to fetch
  * @return {void}
  */
@@ -268,9 +268,9 @@ Messangi.prototype.getWorkspace = function(success, error, clientId){
 }
 
 /**
- * Joins to new workspace and start receiving notifications from it
- * @param  {joinWorkspaceCallback} success - Method to invoke in successful execution  
- * @param  {errorCallback} error - Method to invoke if some error is occurred
+ * Joins a new workspace and starts receiving notifications from it
+ * @param  {joinWorkspaceCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @param  {string} clientId - clientId ID of workspace to subscribe
  * @return {void}
  */
@@ -280,8 +280,8 @@ Messangi.prototype.joinWorkspace = function(success, error, clientId){
 
 /**
  * Removes workspace subscription and stops receiving notifications from it
- * @param  {leaveWorkspaceCallback} success - Method to invoke in successful execution
- * @param  {errorCallback} error - Method to invoke if some error is occurred
+ * @param  {leaveWorkspaceCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @param  {string} clientId - clientId ID of the workspace to leave
  * @return {void}
  */
@@ -290,11 +290,11 @@ Messangi.prototype.leaveWorkspace = function(success, error, clientId){
 };
 
 /**
- * Sends a message from device to workspace 
- * @param  {sendMessageCallback} success - Method to invoke in successful execution
- * @param  {errorCallback} error - Method to invoke if some error is occurred
- * @param  {string} message - Text to send to Workspace
- * @param  {string} [clientId] - (Optional) Client ID of workspace to send a message. By default uses the Main Workspace
+ * Sends a message from device to a workspace 
+ * @param  {sendMessageCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
+ * @param  {string} message - Text to send to the Workspace
+ * @param  {string} [clientId] - (Optional) Client ID of the workspace to which the message is being sent. By default uses the Main Workspace
  * @return {void}
  */
 Messangi.prototype.sendMessage = function(success, error, message, clientId){
@@ -312,10 +312,10 @@ Messangi.prototype.sendMessage = function(success, error, message, clientId){
 };
 
 /**
- * Gets all received messages by MessangiSDK, filtering them by specific workspaces
- * @param  {listMessagesCallback} success - Method to invoke in successfully execution
- * @param  {errorCallback} error - Method to invoke if some error is occurred
- * @param  {string[]} [clientsIds] - Array with all clients' ids of workspace to retrieve.  By default uses the Main Workspace
+ * Gets all the messages received by the MessangiSDK, filtering them by specific workspaces
+ * @param  {listMessagesCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
+ * @param  {string[]} [clientsIds] - Array with all workspaces client IDs.  By default uses the Main Workspace
  * @return {void}
  */
 Messangi.prototype.listMessages = function(success, error, clientsIds){
@@ -333,10 +333,10 @@ Messangi.prototype.listMessages = function(success, error, clientsIds){
 };
 
 /**
- * Gets all Geofences received by MessangiSDK, filtering them by specific workspaces
- * @param  {listGeofencesCallback} success - Method to invoke in successfully execution
- * @param  {errorCallback} error - Method to invoke if some error is occurred
- * @param  {string[]} [clientsIds] - Array with all clients ids of workspace to retrieve.  By default uses the Main Workspace
+ * Gets all the Geofences received by the MessangiSDK, filtering them by specific workspaces
+ * @param  {listGeofencesCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
+ * @param  {string[]} [clientsIds] - Array with all workspaces client IDs.  By default uses the Main Workspace
  * @return {void}
  */
 Messangi.prototype.listGeofences = function(success, error, clientsIds){
@@ -354,11 +354,11 @@ Messangi.prototype.listGeofences = function(success, error, clientsIds){
 };
 
 /**
- * Gets all Beacons received by MessangiSDK, filtering them by specific workspaces
- * @param  {listBeaconCallback} success - Method to invoke in successfully execution
- * @param  {errorCallback} error - Method to invoke if some error is occurred
+ * Gets all the Beacons received by MessangiSDK, filtering them by specific workspaces
+ * @param  {listBeaconCallback} success - Method to invoke after successful execution
+ * @param  {errorCallback} error - Method to invoke if an error has occurred
  * @param  {string} [type] - (Optional) string with the type of Beacon to retrieve; available types: "all", "bluetooth" or "wifi" 
- * @param  {string[]} [clientsIds] - (Optional) Array with all clients ids of workspace to retrieve.  By default uses the Main Workspace
+ * @param  {string[]} [clientsIds] - (Optional) Array with all workspaces client IDs.  By default uses the Main Workspace
  * @return {void}
  */
 Messangi.prototype.listBeacons = function(success, error, type, clientsIds){
