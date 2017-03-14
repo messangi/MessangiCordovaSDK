@@ -1,148 +1,148 @@
 /**
- * Este callback resulta de obtener correctamente los beacons del dispositivo
+ * This callback is called when the list of beacons has been successfully loaded in the SDK
  *
  * @callback listBeaconCallback
  * @param {Beacon[]} list - Array with all Beacons saved in device
  */
 
 /**
- * Este callback resulta de obtener correctamente los geofences del dispositivo
+ * This callback is called when the list of geofences has been successfully loaded in the SDK
  *
  * @callback listGeofencesCallback
  * @param {Geofence[]} list - Array with all GeoFence saved in device
  */
 
 /**
- * Este callback resulta de obtener correctamente los geofences del dispositivo
+ * This callback is called when the list of messages has been successfully loaded in the SDK
  *
  * @callback listMessagesCallback
  * @param {Message[]} list - Array with all Notification saved in device
  */
 
 /**
- * Este callback resulta de enviar correctamente un mensaje desde el dispositivo al workspace
+ * This callback is called when an outgoing message has been successfully sent from the app to the ME platform
  *
  * @callback sendMessageCallback
  */
 
 /**
- * Este callback resulta de eliminar la subscripcion a un workspace
+ * This callback is called when the user leaves a workspace
  *
  * @callback leaveWorkspaceCallback
  */
 
 /**
- * Este callback resulta de agregar la subscripcion a un workspace
+ * This callback is called when the user joins a workspace
  *
  * @callback joinWorkspaceCallback
  * @param {Workspace} workspace - workspace joined
  */
 
 /**
- * Este callback resulta de obtener el workspace por el clientId
+ * This callback is called when the user requests a workspace by ID
  *
  * @callback getWorkspaceCallback
- * @param {Workspace} workspace - Workspace obtenido
+ * @param {Workspace} workspace - Workspace
  */
 
 /**
- * Este callback resulta de obtener el workspace por defecto
+ * This callback is called after obtaining the default workspace
  *
  * @callback getDefaultWorkspaceCallback
  * @param {Workspace} workspace - Default workspace
  */
 
 /**
- * Este callback resulta de listar todos los workspace suscritos por el usuario
+ * This callback is called with the list of all the workspaces to which the user is subscribed
  *
  * @callback getSubscribedWorkspacesCallback
- * @param {Workspace[]} workspace - Lista de workspaces suscritos
+ * @param {Workspace[]} workspace - List of subscribed workspaces
  */
 
 /**
- * Este callback resulta de listar todos los workspace disponibles para unirse
+ * This callback returns the list of all the available workspaces to which the user can subscribe
  *
  * @callback getAvailableWorkspacesCallback
- * @param {Workspace[]} workspace - Lista de workspace disponibles
+ * @param {Workspace[]} workspace - List of available workspaces
  */
 
 /**
- * Este callback resulta de validar correctamente el numero de telefono
+ * This callback is called after successfully activating the mobile number
  *
  * @callback activatePhoneWithCodeCallback
  */
 
 
 /**
- * Este callback resulta de registrar correctamente el numero de telefono
+ * This callback is called after successfully registering the mobile number
  *
  * @callback registerWithPhoneCallback
  */
 
 /**
- * Este callback resulta de registrar correctamente un token cualquiera
+ * This callback is called after successfully registering a token
  *
  * @callback registerWithTokenCallback
  */
 
 /**
- * Este callback resulta de registrar correctamente un token cualquiera
+ * This callback is called after registering the device
  *
  * @callback registerCallback
  */
 
 /**
- * Este callback resulta de obtener correctamente la ubicacion actual del dispositivo
+ * This callback is called after obtaining the device location
  *
  * @callback getCurrentLocationCallback
- * @param {Location} location - Objeto que representa la ubicacion actual del dispositivo
+ * @param {Location} location - Device location
  */
 
 /**
- * Este callback resulta de la actualizacion automatica de la ubicacion actual del dispositivo
+ * This callback is called when the location of the device is updated
  *
  * @callback onLocationUpdateCallback
- * @param {Location} location - Objeto que representa la ubicacion actual del dispositivo
+ * @param {Location} location - Device location
  */
 
 /**
- * Este callback es llamado cuando se recibe un nuevo Mensaje mediante una notificacion PUSH
+ * This callback is called when a new push notification is received
  *
  * @callback onPushReceivedCallback
- * @param {Message} message - Nuevo mensaje recibido en el dispositivo
+ * @param {Message} message - Notification
  */
 
 /**
- * Este callback es llamado si todo funciona correctamente
+ * This callback is called to validate that the user was successfully registered
  *
  * @callback getUserIDCallback
- * @param {boolean} valid - true si el usuario es valido y esta correctamente registrado, false en caso contrario 
+ * @param {boolean} valid - true if the user is valid and was successfully registered, false otherwise
  */
 
 
 /**
- * Este callback es llamado si el usuario se encuentra registrado en el sistema
+ * This callback is called to obtain the user ID
  *
  * @callback getUserIDCallback
- * @param {string} userID - String con el usuario que se registro
+ * @param {string} userID - User ID
  */
 
 /**
- * Este callback es llamado si el usuario no se encuentra registrado en el sistema
+ * This callback is called if the retrieval of the user ID failed or the user registration is invalid
  *
  * @callback getUserIDErrorCallback
- * @param {string} error - Mensaje de error
+ * @param {string} error - Error message
  */
 
 /**
- * Este callback es el resultado de algun error en el procesamiento de la funcion
+ * This is the generic error callback, called when a generic error occurs in the SDK
  *
  * @callback errorCallback
- * @param {string} message - Error arrojado por la funcion
+ * @param {string} message - Error message
  */
 
 /**
- * Este callback es llamado si el proceso de inicializacion culmina exitosamente
+ * This callback is called after the initialization process is complete successfully
  *
  * @callback initCallback
  */
