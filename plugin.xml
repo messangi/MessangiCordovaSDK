@@ -77,7 +77,7 @@
 			</feature>
 		</config-file>
 		<source-file src="src/android/CDVMessangi.java" target-dir="src/com/ogangi/cordova/plugins" />
-		<framework src="com.ogangi.messangi.android.sdk:messangisdk:2.9.11" />
+		<framework src="com.ogangi.messangi.android.sdk:messangisdk:3.0.0" />
 	</platform>
 
 </plugin>
