@@ -13,6 +13,7 @@ static NSString *callbackId;
 static NSString *initCallbackId;
 static NSString *pushCallbackId;
 static NSString *locationCallbackId;
+static NSString *geofenceCallbackId;
 
 - (void)init:(CDVInvokedUrlCommand*)command
 {
@@ -90,6 +91,12 @@ static NSString *locationCallbackId;
 - (void)locationCallback:(CDVInvokedUrlCommand*)command
 {
     locationCallbackId = command.callbackId;
+}
+
+- (void) geofenceCallback:(CDVInvokedUrlCommand*)command
+{
+    geofenceCallbackId = command.callbackId;
+    //TODO: Hacer que el SDK devuelva el geofence que disparo algun trigger
 }
 
 - (void)onLocationUpdate
@@ -488,6 +495,38 @@ static NSString *locationCallbackId;
 }
 
 // End Beacon
+
+/************************************************************************************
+*********************************  Location Configurator  ***************************
+*************************************************************************************/
+
+- (void) setLocationPriority:(CDVInvokedUrlCommand*)command
+{
+    NSLog(@"setLocationPriority");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void) setLocationInterval:(CDVInvokedUrlCommand*)command
+{
+    NSLog(@"setLocationInterval");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+// End Location Configuration
 
 /************************************************************************************
 *********************************  Subscriptions  ***********************************

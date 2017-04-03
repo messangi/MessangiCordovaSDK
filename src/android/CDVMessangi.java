@@ -43,6 +43,7 @@ public class CDVMessangi extends CordovaPlugin {
     private CallbackContext pushCallback;
     private CallbackContext locationCallback;
     private CallbackContext readyCallback;
+    private CallbackContext geofenceCallback;
 
 
 
@@ -183,8 +184,17 @@ public class CDVMessangi extends CordovaPlugin {
         }else if(action.equals("locationCallback")){
             locationCallback = callbackContext;
             return true;
+        }else if(action.equals("geofenceCallback")){
+            geofenceCallback = callbackContext;
+            return true;
         }else if(action.equals("getCurrentLocation")){
             this.getCurrentLocation(callbackContext);
+            return true;
+        }else if(action.equals("setLocationPriority")){
+            this.setLocationPriority(args.getInt(0), callbackContext);
+            return true;
+        }else if(action.equals("setLocationInterval")){
+            this.setLocationInterval(args.getLong(0), callbackContext);
             return true;
         }
         /*
@@ -228,8 +238,21 @@ public class CDVMessangi extends CordovaPlugin {
                     }
 
                     @Override
-                    public void updateFencesStatus(Geofence geofence, int i, Location location, Workspace workspace) {
-
+                    public void updateFencesStatus(Geofence geofence, int geofenceTransition, Location location, Workspace workspace) {
+                        if(geofenceCallback == null){
+                            return;
+                        }
+                        String geofenceId = geofence.getRequestId();
+                        PluginResult result = new PluginResult(PluginResult.Status.ERROR, "Geofence with id: "+geofenceId+" not found");
+                        List<GeoFenceVO> geofences = workspace.getGeofences();
+                        for(GeoFenceVO tmp : geofences){
+                            if(tmp.getGeoFenceId().equals(geofenceId)){
+                                result = new PluginResult(PluginResult.Status.OK, tmp.toJSON());
+                                break;
+                            }
+                        }
+                        result.setKeepCallback(true);
+                        geofenceCallback.sendPluginResult(result);
                     }
 
                     @Override
@@ -581,7 +604,21 @@ public class CDVMessangi extends CordovaPlugin {
 
     }
 
-    /************************************************************************************
+    /*************************************************************************************
+     *********************************  Location Configuration  **************************
+     *************************************************************************************/
+
+    private void setLocationPriority(int priority, CallbackContext callback){
+        Messangi.getInstance().setLocationType(priority);
+        callback.success();
+    }
+
+    private void setLocationInterval(long interval, CallbackContext callback){
+        Messangi.getInstance().setLocationUpdateTime(interval);
+        callback.success();
+    }
+
+    /*************************************************************************************
      *********************************  Subscriptions  ***********************************
      *************************************************************************************/
 

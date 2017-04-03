@@ -125,6 +125,23 @@ function Messangi() {
 }
 
 /**
+ * Enum for Priority values.
+ * @readonly
+ * @enum {number}
+ */
+Messangi.prototype.Priority = {
+  /** Request "block" level accuracy. Block level accuracy is considered to be about 100 meter accuracy. Using a coarse accuracy such as this often consumes less power. */
+  PRIORITY_BALANCED_POWER_ACCURACY: 102,
+  /** Request the most accurate locations available. This will return the finest location available */
+  PRIORITY_HIGH_ACCURACY: 100,
+  /** Request "city" level accuracy. City level accuracy is considered to be about 10km accuracy. Using a coarse accuracy such as this often consumes less power. */
+  PRIORITY_LOW_POWER: 104,
+  /** (Default) Request the best accuracy possible with zero additional power consumption. No locations will be returned unless a different client has requested location updates in which case this request will act as a passive listener to those locations.*/
+  PRIORITY_NO_POWER: 105
+};
+
+
+/**
  * Initializes the MessangiSDK plugin 
  * @param  {initCallback} success - If initialization finishes correctly
  * @param  {errorCallback} error - If any error happens in the initialization process
@@ -173,6 +190,16 @@ Messangi.prototype.onPushReceived = function(success,error){
 Messangi.prototype.onLocationUpdate = function(success,error){
   cordova.exec(success, error,"CDVMessangi","locationCallback",[]);
 };
+
+/**
+ * Set the callback for Geofence Triggered event
+ * @param  {onGeofenceTriggeredCallback} success - Method to invoke when a geofence is triggered
+ * @param  {errorCallback} error - Method to invoke in case of error
+ * @return {void}
+ */
+Messangi.prototype.onGeofenceTriggered = function(success, error){
+  cordova.exec(success, error, "CDVMessangi", "geofenceCallback", []);
+}
 
 /**
  * Get Current Location
@@ -377,6 +404,25 @@ Messangi.prototype.listBeacons = function(success, error, type, clientsIds){
     });
   }
 };
+
+/**
+ * (Only for Android) - Set the priority of the location request, is a strong hint to the LocationClient for which location sources to use.
+ * @param  {Priority} priority - An accuracy or power constant 
+ * @return {void}
+ */
+Messangi.prototype.setLocationPriority = function(priority){
+  cordova.exec(null, null, "CDVMessangi", "setLocationPriority",[priority]);
+}
+
+/**
+ * (Only for Android) - Set the desired interval for active location updates, in milliseconds. This interval is inexact. You may not receive updates at all (if no location sources are available), or you may receive them slower than requested. You may also receive them faster than requested (if other applications are requesting location at a faster interval).
+ * @param  {number} interval - Desired interval in millisecond, inexact
+ * @return {void}
+ */
+Messangi.prototype.setLocationInterval = function(interval){
+  cordova.exec(null, null, "CDVMessangi", "setLocationInterval",[interval]);
+}
+
 
 Messangi.install = function () {
   if (!window.plugins) {

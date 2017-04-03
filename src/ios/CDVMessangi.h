@@ -19,6 +19,7 @@
 - (void) pushCallback:(CDVInvokedUrlCommand*)command;
 - (void) onPushReceived:(Message *)message;
 - (void) locationCallback:(CDVInvokedUrlCommand*)command;
+- (void) geofenceCallback:(CDVInvokedUrlCommand*)command;
 - (void) onLocationUpdate;
 - (void) getCurrentLocation:(CDVInvokedUrlCommand*)command;
 - (void) sendPhoneNumber:(CDVInvokedUrlCommand*)command;
@@ -33,5 +34,8 @@
 - (void) sendMessage:(CDVInvokedUrlCommand*)command;
 - (void) listGeofences:(CDVInvokedUrlCommand*)command;
 - (void) listBeacons:(CDVInvokedUrlCommand*)command;
+
+- (void) setLocationPriority:(CDVInvokedUrlCommand*)command;
+- (void) setLocationInterval:(CDVInvokedUrlCommand*)command;
 
 @end
