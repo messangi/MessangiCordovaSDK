@@ -92,4 +92,12 @@ After having base project set and working properly, go to the base project direc
     - Check and clean comments
 
 ## Version
-3.0.3
+3.1.1
+
+## Changelog
+#### 3.1.1
+	Update Native version of MessangiSDK for Android and iOS, this update fix a bug with creation of new beacons based campaing 
+#### 3.1.0
+	Added configuration functions for Location capabilities
+#### 3.0.0
+	Source code release

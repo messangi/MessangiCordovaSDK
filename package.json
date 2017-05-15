@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-messangi",
   "version": "3.1.0",
-  "description": "Cool plugin description",
+  "description": "Plugin for integate the MessangiSDK for Mobile Engagamente Solution",
   "cordova": {
     "id": "com.ogangi.messangi",
     "platforms": [
