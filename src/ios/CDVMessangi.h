@@ -38,4 +38,15 @@
 - (void) setLocationPriority:(CDVInvokedUrlCommand*)command;
 - (void) setLocationInterval:(CDVInvokedUrlCommand*)command;
 
+- (void) usePowerSaver:(CDVInvokedUrlCommand*)command;
+- (void) useAndroidLScanner:(CDVInvokedUrlCommand*)command;
+- (void) useTrackingCache:(CDVInvokedUrlCommand*)command;
+- (void) setBeaconExitPeriod:(CDVInvokedUrlCommand*)command;
+- (void) useRegionPersistence:(CDVInvokedUrlCommand*)command;
+- (void) autoSetScanMode:(CDVInvokedUrlCommand*)command;
+- (void) useBackgroundScanMode:(CDVInvokedUrlCommand*)command;
+- (void) useForegroundScanMode:(CDVInvokedUrlCommand*)command;
+- (void) setForegroundScanCycles:(CDVInvokedUrlCommand*)command;
+- (void) setBackgroundScanCycles:(CDVInvokedUrlCommand*)command;
+
 @end

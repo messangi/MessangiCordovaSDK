@@ -95,4 +95,6 @@ Luego de tener el proyecto base funcionando correctamente, ir al directorio base
     - Revisar y limpiar todos los comentarios
 
 ### Versión
-3.1.1
+3.2.0
+
+

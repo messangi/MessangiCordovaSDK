@@ -423,6 +423,88 @@ Messangi.prototype.setLocationInterval = function(interval){
   cordova.exec(null, null, "CDVMessangi", "setLocationInterval",[interval]);
 }
 
+/**
+ * (Ony for Android) - Creating an instance power saver class can improve battery life by 60% by slowing down scans when your app is in the background.
+ * @param {booleam} enable - true if are enable, false otherwise
+ * @return {void}
+ */
+Messangi.prototype.setBluetoothPowerSaver = function(enable){
+  cordova.exec(null, null, "CDVMessangi", "usePowerSaver",[enable]);
+}
+
+/**
+ * (Ony for Android) - Allows devices with API 21+ will use the Android L APIs to scan for beacons, below 21 API use old Android Way.
+ * @param {booleam} enable - true if are enable, false otherwise
+ * @return {void}
+ */
+Messangi.prototype.useNewBeaconScanner = function(enable){
+  cordova.exec(null, null, "CDVMessangi", "useAndroidLScanner", [enable]);
+}
+
+/**
+ * (Ony for Android) - Allow the library to use a tracking cache
+ * @param {boolean} enable - true if are enable, false otherwise
+ * @return {void}
+ */
+Messangi.prototype.useBeaconTrackingCache = function(enable){
+  cordova.exec(null, null, "CDVMessangi", "useTrackingCache", [enable]);
+}
+
+/**
+ * (Ony for Android) - Elapsed time to check if Exit/Enter event will be triggered 
+ * @param {number} millis - Set region exit period in milliseconds
+ */
+Messangi.prototype.setBeaconExitPeriod = function(millis){
+  cordova.exec(null, null, "CDVMessangi", "setBeaconExitPeriod",[millis]);
+}
+
+/**
+ * (Ony for Android) - Turns off saving the state of monitored regions to persistent storage so it is retained over app restarts. Defaults to enabled
+ * @param {boolean} enable - true if are enable, false otherwise
+ */
+Messangi.prototype.keepRegionPersintence = function(enable){
+  cordova.exec(null, null, "CDVMessangi", "useRegionPersistence",[enable]);
+}
+
+/**
+ * (Ony for Android) - Enable or not automatically change between Background and Foreground modes. This method require app restart.
+ * @param enable true if are enable, false otherwise
+ */
+Messangi.prototype.autoSetBeaconScanMode = function(enable){
+  cordova.exec(null, null, "CDVMessangi", "autoSetScanMode",[enable]);
+}
+
+/**
+ * (Ony for Android) - This method notifies the beacon service that the application is either moving to background mode.
+ */
+Messangi.prototype.scanBeaconsBackgroundMode = function(){
+  cordova.exec(null, null, "CDVMessangi", "useBackgroundScanMode",[enable]);
+}
+
+/**
+ * (Ony for Android) - This method notifies the beacon service that the application is either moving to foreground mode.
+ */
+Messangi.prototype.scanBeaconsForegroundMode = function(){
+  cordova.exec(null, null, "CDVMessangi", "useForegroundScanMode",[enable]);
+}
+
+/**
+ * (Ony for Android) - Set the duration in milliseconds of each Foreground Cycle
+ * @param scanPeriod Sets the duration in milliseconds of each Bluetooth LE scan cycle to look for beacons.
+ * @param sleepPeriod Sets the duration in milliseconds between each Bluetooth LE scan cycle to look for beacons.
+ */
+Messangi.prototype.setForegroundScanCycles = function(scanPeriod, sleepPeriod){
+  cordova.exec(null, null, "CDVMessangi", "setForegroundScanCycles",[scanPeriod, sleepPeriod]);
+}
+
+/**
+ * (Ony for Android) - Set the duration in milliseconds of each Background Cycle
+ * @param scanPeriod Sets the duration in milliseconds of each Bluetooth LE scan cycle to look for beacons.
+ * @param sleepPeriod Sets the duration in milliseconds between each Bluetooth LE scan cycle to look for beacons.
+ */
+Messangi.prototype.setBackgroundScanCycles = function(scanPeriod, sleepPeriod){
+  cordova.exec(null, null, "CDVMessangi", "setBackgroundScanCycles",[scanPeriod, sleepPeriod]);
+}
 
 Messangi.install = function () {
   if (!window.plugins) {

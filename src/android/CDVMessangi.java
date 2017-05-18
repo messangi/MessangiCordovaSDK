@@ -196,6 +196,36 @@ public class CDVMessangi extends CordovaPlugin {
         }else if(action.equals("setLocationInterval")){
             this.setLocationInterval(args.getLong(0), callbackContext);
             return true;
+        }else if(action.equals("usePowerSaver")){
+            this.usePowerSaver(args.getBoolean(0), callbackContext)
+            return true;
+        }else if(action.equals("useAndroidLScanner")){
+            this.useAndroidLScanner(args.getBoolean(0), callbackContext)
+            return true;
+        }else if(action.equals("useTrackingCache")){
+            this.useTrackingCache(args.getBoolean(0), callbackContext)
+            return true;
+        }else if(action.equals("setBeaconExitPeriod")){
+            this.setBeaconExitPeriod(args.getLong(0), callbackContext)
+            return true;
+        }else if(action.equals("useRegionPersistence")){
+            this.useRegionPersistence(args.getBoolean(0), callbackContext)
+            return true;
+        }else if(action.equals("autoSetScanMode")){
+            this.autoSetScanMode(args.getBoolean(0), callbackContext)
+            return true;
+        }else if(action.equals("useBackgroundScanMode")){
+            this.useBackgroundScanMode(callbackContext)
+            return true;
+        }else if(action.equals("useForegroundScanMode")){
+            this.useForegroundScanMode(callbackContext)
+            return true;
+        }else if(action.equals("setForegroundScanCycles")){
+            this.setForegroundScanCycles(args.getLong(0), args.getLong(1), callbackContext)
+            return true;
+        }else if(action.equals("setBackgroundScanCycles")){
+            this.setBackgroundScanCycles(args.getLong(0), args.getLong(1), callbackContext)
+            return true;
         }
         /*
         //TODO: Subscription List
@@ -618,6 +648,59 @@ public class CDVMessangi extends CordovaPlugin {
         callback.success();
     }
 
+    /*************************************************************************************
+     *********************************  Beacon Configuration *****************************
+     *************************************************************************************/
+     
+    private void usePowerSaver(boolean enable, CallbackContext callback){
+        Messangi.getInstance().setPowerSaver(enable);
+        callback.success();
+    }
+
+    private void useAndroidLScanner(boolean enable, CallbackContext callback){
+        Messangi.getInstance().useNewBeaconScanner(enable);
+        callback.success();
+    }
+
+    private void useTrackingCache(boolean enable, CallbackContext callback){
+        Messangi.getInstance().useTrackingCache(enable);
+        callback.success();
+    }
+
+    private void setBeaconExitPeriod(long millis, CallbackContext callback){
+        Messangi.getInstance().setRegionExitPeriod(millis);
+        callback.success();
+    }
+
+    private void useRegionPersistence(boolean enable, CallbackContext callback){
+        Messangi.getInstance().useRegionStatePersistence(enable);
+        callback.success();
+    }
+
+    private void autoSetScanMode(boolean enable, CallbackContext callback){
+        Messangi.getInstance().autoChangeScanMode(enable);
+        callback.success();
+    }
+
+    private void useBackgroundScanMode(CallbackContext callback){
+        Messangi.getInstance().scanInBackgroundMode();
+        callback.success();
+    }
+
+    private void useForegroundScanMode(CallbackContext callback){
+        Messangi.getInstance().scanInForegroundMode();
+        callback.success();
+    }
+
+    private void setForegroundScanCycles(long scanPeriod, long sleepPeriod, CallbackContext callback){
+        Messangi.getInstance().setForegroundPeriods(sleepPeriod);
+        callback.success();
+    }
+
+    private void setBackgroundScanCycles(long scanPeriod, long sleepPeriod, CallbackContext callback){
+        Messangi.getInstance().setBackgroundPeriods(sleepPeriod);
+        callback.success();
+    }
     /*************************************************************************************
      *********************************  Subscriptions  ***********************************
      *************************************************************************************/

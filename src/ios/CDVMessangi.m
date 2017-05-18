@@ -529,6 +529,152 @@ static NSString *geofenceCallbackId;
 // End Location Configuration
 
 /************************************************************************************
+*********************************  Beacon Configurator  ***************************
+*************************************************************************************/
+
+- (void) usePowerSaver:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"usePowerSaver");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) useAndroidLScanner:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"useAndroidLScanner");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) useTrackingCache:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"useTrackingCache");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) setBeaconExitPeriod:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"setBeaconExitPeriod");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) useRegionPersistence:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"useRegionPersistence");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) autoSetScanMode:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"autoSetScanMode");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) useBackgroundScanMode:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"useBackgroundScanMode");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) useForegroundScanMode:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"useForegroundScanMode");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) setForegroundScanCycles:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"setForegroundScanCycles");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void) setBackgroundScanCycles:(CDVInvokedUrlCommand*)command;
+{
+    NSLog(@"setBackgroundScanCycles");
+    NSInteger count = [command.arguments count];
+    NSString *token = nil;
+    if(count == 1){
+        token = [command.arguments objectAtIndex:0];
+    }
+    //TODO: Implementar 
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+// End Beacon Configuration
+
+/************************************************************************************
 *********************************  Subscriptions  ***********************************
 *************************************************************************************/
 
