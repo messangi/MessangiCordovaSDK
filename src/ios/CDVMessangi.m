@@ -529,10 +529,10 @@ static NSString *geofenceCallbackId;
 // End Location Configuration
 
 /************************************************************************************
-*********************************  Beacon Configurator  ***************************
+*********************************  Beacon Configurator  *****************************
 *************************************************************************************/
 
-- (void) usePowerSaver:(CDVInvokedUrlCommand*)command;
+- (void) usePowerSaver:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"usePowerSaver");
     NSInteger count = [command.arguments count];
@@ -546,7 +546,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) useAndroidLScanner:(CDVInvokedUrlCommand*)command;
+- (void) useAndroidLScanner:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"useAndroidLScanner");
     NSInteger count = [command.arguments count];
@@ -560,7 +560,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) useTrackingCache:(CDVInvokedUrlCommand*)command;
+- (void) useTrackingCache:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"useTrackingCache");
     NSInteger count = [command.arguments count];
@@ -574,7 +574,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) setBeaconExitPeriod:(CDVInvokedUrlCommand*)command;
+- (void) setBeaconExitPeriod:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"setBeaconExitPeriod");
     NSInteger count = [command.arguments count];
@@ -588,7 +588,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) useRegionPersistence:(CDVInvokedUrlCommand*)command;
+- (void) useRegionPersistence:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"useRegionPersistence");
     NSInteger count = [command.arguments count];
@@ -602,7 +602,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) autoSetScanMode:(CDVInvokedUrlCommand*)command;
+- (void) autoSetScanMode:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"autoSetScanMode");
     NSInteger count = [command.arguments count];
@@ -616,7 +616,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) useBackgroundScanMode:(CDVInvokedUrlCommand*)command;
+- (void) useBackgroundScanMode:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"useBackgroundScanMode");
     NSInteger count = [command.arguments count];
@@ -630,7 +630,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) useForegroundScanMode:(CDVInvokedUrlCommand*)command;
+- (void) useForegroundScanMode:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"useForegroundScanMode");
     NSInteger count = [command.arguments count];
@@ -644,7 +644,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) setForegroundScanCycles:(CDVInvokedUrlCommand*)command;
+- (void) setForegroundScanCycles:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"setForegroundScanCycles");
     NSInteger count = [command.arguments count];
@@ -658,7 +658,7 @@ static NSString *geofenceCallbackId;
 }
 
 
-- (void) setBackgroundScanCycles:(CDVInvokedUrlCommand*)command;
+- (void) setBackgroundScanCycles:(CDVInvokedUrlCommand*)command
 {
     NSLog(@"setBackgroundScanCycles");
     NSInteger count = [command.arguments count];

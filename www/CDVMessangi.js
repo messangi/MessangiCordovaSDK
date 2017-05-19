@@ -428,7 +428,7 @@ Messangi.prototype.setLocationInterval = function(interval){
  * @param {booleam} enable - true if are enable, false otherwise
  * @return {void}
  */
-Messangi.prototype.setBluetoothPowerSaver = function(enable){
+Messangi.prototype.usePowerSaver = function(enable){
   cordova.exec(null, null, "CDVMessangi", "usePowerSaver",[enable]);
 }
 
@@ -437,7 +437,7 @@ Messangi.prototype.setBluetoothPowerSaver = function(enable){
  * @param {booleam} enable - true if are enable, false otherwise
  * @return {void}
  */
-Messangi.prototype.useNewBeaconScanner = function(enable){
+Messangi.prototype.useAndroidLScanner = function(enable){
   cordova.exec(null, null, "CDVMessangi", "useAndroidLScanner", [enable]);
 }
 
@@ -446,7 +446,7 @@ Messangi.prototype.useNewBeaconScanner = function(enable){
  * @param {boolean} enable - true if are enable, false otherwise
  * @return {void}
  */
-Messangi.prototype.useBeaconTrackingCache = function(enable){
+Messangi.prototype.useTrackingCache = function(enable){
   cordova.exec(null, null, "CDVMessangi", "useTrackingCache", [enable]);
 }
 
@@ -462,7 +462,7 @@ Messangi.prototype.setBeaconExitPeriod = function(millis){
  * (Ony for Android) - Turns off saving the state of monitored regions to persistent storage so it is retained over app restarts. Defaults to enabled
  * @param {boolean} enable - true if are enable, false otherwise
  */
-Messangi.prototype.keepRegionPersintence = function(enable){
+Messangi.prototype.useRegionPersistence = function(enable){
   cordova.exec(null, null, "CDVMessangi", "useRegionPersistence",[enable]);
 }
 
@@ -470,21 +470,21 @@ Messangi.prototype.keepRegionPersintence = function(enable){
  * (Ony for Android) - Enable or not automatically change between Background and Foreground modes. This method require app restart.
  * @param enable true if are enable, false otherwise
  */
-Messangi.prototype.autoSetBeaconScanMode = function(enable){
+Messangi.prototype.autoSetScanMode = function(enable){
   cordova.exec(null, null, "CDVMessangi", "autoSetScanMode",[enable]);
 }
 
 /**
  * (Ony for Android) - This method notifies the beacon service that the application is either moving to background mode.
  */
-Messangi.prototype.scanBeaconsBackgroundMode = function(){
+Messangi.prototype.useBackgroundScanMode = function(){
   cordova.exec(null, null, "CDVMessangi", "useBackgroundScanMode",[enable]);
 }
 
 /**
  * (Ony for Android) - This method notifies the beacon service that the application is either moving to foreground mode.
  */
-Messangi.prototype.scanBeaconsForegroundMode = function(){
+Messangi.prototype.useForegroundScanMode = function(){
   cordova.exec(null, null, "CDVMessangi", "useForegroundScanMode",[enable]);
 }
 

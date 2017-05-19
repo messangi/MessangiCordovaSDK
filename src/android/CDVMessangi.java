@@ -197,34 +197,34 @@ public class CDVMessangi extends CordovaPlugin {
             this.setLocationInterval(args.getLong(0), callbackContext);
             return true;
         }else if(action.equals("usePowerSaver")){
-            this.usePowerSaver(args.getBoolean(0), callbackContext)
+            this.usePowerSaver(args.getBoolean(0), callbackContext);
             return true;
         }else if(action.equals("useAndroidLScanner")){
-            this.useAndroidLScanner(args.getBoolean(0), callbackContext)
+            this.useAndroidLScanner(args.getBoolean(0), callbackContext);
             return true;
         }else if(action.equals("useTrackingCache")){
-            this.useTrackingCache(args.getBoolean(0), callbackContext)
+            this.useTrackingCache(args.getBoolean(0), callbackContext);
             return true;
         }else if(action.equals("setBeaconExitPeriod")){
-            this.setBeaconExitPeriod(args.getLong(0), callbackContext)
+            this.setBeaconExitPeriod(args.getLong(0), callbackContext);
             return true;
         }else if(action.equals("useRegionPersistence")){
-            this.useRegionPersistence(args.getBoolean(0), callbackContext)
+            this.useRegionPersistence(args.getBoolean(0), callbackContext);
             return true;
         }else if(action.equals("autoSetScanMode")){
-            this.autoSetScanMode(args.getBoolean(0), callbackContext)
+            this.autoSetScanMode(args.getBoolean(0), callbackContext);
             return true;
         }else if(action.equals("useBackgroundScanMode")){
-            this.useBackgroundScanMode(callbackContext)
+            this.useBackgroundScanMode(callbackContext);
             return true;
         }else if(action.equals("useForegroundScanMode")){
-            this.useForegroundScanMode(callbackContext)
+            this.useForegroundScanMode(callbackContext);
             return true;
         }else if(action.equals("setForegroundScanCycles")){
-            this.setForegroundScanCycles(args.getLong(0), args.getLong(1), callbackContext)
+            this.setForegroundScanCycles(args.getLong(0), args.getLong(1), callbackContext);
             return true;
         }else if(action.equals("setBackgroundScanCycles")){
-            this.setBackgroundScanCycles(args.getLong(0), args.getLong(1), callbackContext)
+            this.setBackgroundScanCycles(args.getLong(0), args.getLong(1), callbackContext);
             return true;
         }
         /*
@@ -693,12 +693,12 @@ public class CDVMessangi extends CordovaPlugin {
     }
 
     private void setForegroundScanCycles(long scanPeriod, long sleepPeriod, CallbackContext callback){
-        Messangi.getInstance().setForegroundPeriods(sleepPeriod);
+        Messangi.getInstance().setForegroundPeriods(scanPeriod, sleepPeriod);
         callback.success();
     }
 
     private void setBackgroundScanCycles(long scanPeriod, long sleepPeriod, CallbackContext callback){
-        Messangi.getInstance().setBackgroundPeriods(sleepPeriod);
+        Messangi.getInstance().setBackgroundPeriods(scanPeriod, sleepPeriod);
         callback.success();
     }
     /*************************************************************************************
