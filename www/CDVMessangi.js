@@ -478,14 +478,14 @@ Messangi.prototype.autoSetScanMode = function(enable){
  * (Ony for Android) - This method notifies the beacon service that the application is either moving to background mode.
  */
 Messangi.prototype.useBackgroundScanMode = function(){
-  cordova.exec(null, null, "CDVMessangi", "useBackgroundScanMode",[enable]);
+  cordova.exec(null, null, "CDVMessangi", "useBackgroundScanMode",[]);
 }
 
 /**
  * (Ony for Android) - This method notifies the beacon service that the application is either moving to foreground mode.
  */
 Messangi.prototype.useForegroundScanMode = function(){
-  cordova.exec(null, null, "CDVMessangi", "useForegroundScanMode",[enable]);
+  cordova.exec(null, null, "CDVMessangi", "useForegroundScanMode",[]);
 }
 
 /**
