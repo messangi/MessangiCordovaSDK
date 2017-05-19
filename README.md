@@ -92,11 +92,12 @@ After having base project set and working properly, go to the base project direc
     - Check and clean comments
 
 ## Version
-3.2.0
+3.5.0
 
 ## Changelog
-#### 3.2.0
+#### 3.5.0
 	Added options to configure Beacon Scanner and Location capabilities on Android Devices
+	The options will work in runtime, not need restart the app
 #### 3.1.1
 	Update Native version of MessangiSDK for Android and iOS, this update fix a bug with creation of new beacons based campaing 
 #### 3.1.0
