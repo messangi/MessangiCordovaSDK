@@ -46,6 +46,11 @@ public class CDVMessangi extends CordovaPlugin {
     private CallbackContext geofenceCallback;
 
 
+    private String pushToken;
+    private boolean isPhone = false;
+    private boolean registerLater;
+    private String registerTokenId;
+    private CallbackContext laterRegisterCallback;
 
     /**
      * Initialize the plugin
@@ -63,7 +68,7 @@ public class CDVMessangi extends CordovaPlugin {
         if(!url.equals("null") && !instanceID.equals("null")){
             Messangi.getInstance().loadSubscriptionCredentials(context);
         }
-        
+
         if(!cordova.hasPermission(COARSE_LOCATION) || !cordova.hasPermission(FINE_LOCATION)){
             String [] location_permissions = {
                     COARSE_LOCATION,
@@ -104,15 +109,23 @@ public class CDVMessangi extends CordovaPlugin {
             if(args.length() == 1){
                 token = args.getString(0);
             }
-            if(token == null){
-                this.register(callbackContext);
+            if(pushToken != null){
+                if(token == null){
+                    this.register(callbackContext);
+                }else{
+                    this.registerWithToken(token, callbackContext);
+                }
             }else{
-                this.registerWithToken(token,callbackContext);
+                lateRegister(token, false, callbackContext);
             }
             return true;
         }else if(action.equals("sendPhoneNumber")) {
             String phone = args.getString(0);
-            this.registerWithPhone(phone,callbackContext);
+            if(pushToken != null){
+                this.registerWithPhone(phone, callbackContext);
+            }else{
+                lateRegister(phone, true, callbackContext);
+            }
             return true;
         }else if(action.equals("sendValidationCode")){
             String code = args.getString(0);
@@ -258,6 +271,20 @@ public class CDVMessangi extends CordovaPlugin {
             public void run() {
                 Messangi.getInstance().addMessangiListener(new MessangiListener() {
                     @Override
+                    public void onPushTokenRegistered(String token) {
+                        pushToken = token;
+                        if(registerLater){
+                            if(isPhone){
+                                registerWithPhone(registerTokenId, laterRegisterCallback);
+                            }else if(registerTokenId != null){
+                                registerWithToken(registerTokenId, laterRegisterCallback);
+                            }else{
+                                register(laterRegisterCallback);
+                            }
+                        }
+                    }
+
+                    @Override
                     public void pushReceived(MessageVO messageVO, Workspace workspace) {
                         if(pushCallback == null){
                             return;
@@ -347,6 +374,13 @@ public class CDVMessangi extends CordovaPlugin {
 
     }
 
+    private void lateRegister(String userID, boolean isPhone, CallbackContext callback){
+        this.registerLater = true;
+        this.isPhone = isPhone;
+        this.registerTokenId = userID;
+        this.laterRegisterCallback = callback;
+    }
+
     private void validUser(CallbackContext callback){
         PluginResult result;
         if(Preferences.getInstance(context).getString(Preferences.PHONE_ACTIVATED).equals("true")){
@@ -366,7 +400,7 @@ public class CDVMessangi extends CordovaPlugin {
         }
     }
 
-    private void register(CallbackContext callback){
+    private void register(final CallbackContext callback){
         if(!cordova.hasPermission(RECEIVE_SMS) || !cordova.hasPermission(READ_SMS) || !cordova.hasPermission(READ_PHONE_STATE)){
             String [] login_permissions = {
                     READ_PHONE_STATE,
@@ -375,13 +409,21 @@ public class CDVMessangi extends CordovaPlugin {
             };
             cordova.requestPermissions(this, SMS_REQ_CODE, login_permissions);
         }
-        Messangi.getInstance().registerDialog(this.cordova.getActivity().getApplicationContext(),this.cordova.getActivity());
-        callback.success();
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().registerDialog(cordova.getActivity().getApplicationContext(),cordova.getActivity());
+                callback.success();
+            }
+        });
     }
 
-    private void registerWithToken(String token, CallbackContext callback){
-        Messangi.getInstance().register(context, null, token);
-        callback.success();
+    private void registerWithToken(final String token, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().register(context, null, token);
+                callback.success();
+            }
+        });
     }
 
     private void getCurrentLocation(final CallbackContext callback){
@@ -425,24 +467,32 @@ public class CDVMessangi extends CordovaPlugin {
      *********************************  Custom Register Phone  ***************************
      *************************************************************************************/
 
-    private void registerWithPhone(String phone, CallbackContext callback){
-        if(Messangi.getInstance().registerPhone(context, phone)){
-            callback.success();
-        }else{
-            callback.error("Fail registering phone "+ phone);
-        }
+    private void registerWithPhone(final String phone, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                if(Messangi.getInstance().registerPhone(context, phone)){
+                    callback.success();
+                }else{
+                    callback.error("Fail registering phone "+ phone);
+                }
+            }
+        });
     }
 
     /************************************************************************************
      *********************************  Custom Validate Code  ****************************
      *************************************************************************************/
 
-    private void activatePhoneWithCode(String code, CallbackContext callback){
-        if(Messangi.getInstance().activatePhone(context, code)){
-            callback.success();
-        }else{
-            callback.error("Error in code "+ code);
-        }
+    private void activatePhoneWithCode(final String code, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                if(Messangi.getInstance().activatePhone(context, code)){
+                    callback.success();
+                }else{
+                    callback.error("Error in code "+ code);
+                }
+            }
+        });
     }
 
     /************************************************************************************
@@ -638,69 +688,118 @@ public class CDVMessangi extends CordovaPlugin {
      *********************************  Location Configuration  **************************
      *************************************************************************************/
 
-    private void setLocationPriority(int priority, CallbackContext callback){
-        Messangi.getInstance().setLocationType(priority);
-        callback.success();
+    private void setLocationPriority(final int priority, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().setLocationPriority(priority);
+                callback.success();
+            }
+        });
     }
 
-    private void setLocationInterval(long interval, CallbackContext callback){
-        Messangi.getInstance().setLocationUpdateTime(interval);
-        callback.success();
+    private void setLocationInterval(final long interval, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().setLocationUpdateTime(interval);
+                callback.success();
+            }
+        });
     }
 
     /*************************************************************************************
      *********************************  Beacon Configuration *****************************
      *************************************************************************************/
-     
-    private void usePowerSaver(boolean enable, CallbackContext callback){
-        Messangi.getInstance().setPowerSaver(enable);
-        callback.success();
+
+    private void usePowerSaver(final boolean enable,final  CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().setPowerSaver(enable);
+                callback.success();
+            }
+        });
     }
 
-    private void useAndroidLScanner(boolean enable, CallbackContext callback){
-        Messangi.getInstance().useNewBeaconScanner(enable);
-        callback.success();
+    private void useAndroidLScanner(final boolean enable,final  CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().useNewBeaconScanner(enable);
+                callback.success();
+            }
+        });
     }
 
-    private void useTrackingCache(boolean enable, CallbackContext callback){
-        Messangi.getInstance().useTrackingCache(enable);
-        callback.success();
+    private void useTrackingCache(final boolean enable,final  CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().useTrackingCache(enable);
+                callback.success();
+            }
+        });
     }
 
-    private void setBeaconExitPeriod(long millis, CallbackContext callback){
-        Messangi.getInstance().setRegionExitPeriod(millis);
-        callback.success();
+    private void setBeaconExitPeriod(final long millis, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().setRegionExitPeriod(millis);
+                callback.success();
+            }
+        });
     }
 
-    private void useRegionPersistence(boolean enable, CallbackContext callback){
-        Messangi.getInstance().useRegionStatePersistence(enable);
-        callback.success();
+    private void useRegionPersistence(final boolean enable,final  CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().useRegionStatePersistence(enable);
+                callback.success();
+            }
+        });
     }
 
-    private void autoSetScanMode(boolean enable, CallbackContext callback){
-        Messangi.getInstance().autoChangeScanMode(enable);
-        callback.success();
+    private void autoSetScanMode(final boolean enable,final  CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().autoChangeScanMode(enable);
+                callback.success();
+            }
+        });
     }
 
-    private void useBackgroundScanMode(CallbackContext callback){
-        Messangi.getInstance().scanInBackgroundMode();
-        callback.success();
+    private void useBackgroundScanMode(final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().scanInBackgroundMode();
+                callback.success();
+            }
+        });
     }
 
-    private void useForegroundScanMode(CallbackContext callback){
-        Messangi.getInstance().scanInForegroundMode();
-        callback.success();
+    private void useForegroundScanMode(final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().scanInForegroundMode();
+                callback.success();
+            }
+        });
     }
 
-    private void setForegroundScanCycles(long scanPeriod, long sleepPeriod, CallbackContext callback){
-        Messangi.getInstance().setForegroundPeriods(scanPeriod, sleepPeriod);
-        callback.success();
+    private void setForegroundScanCycles(final long scanPeriod, final long sleepPeriod, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().setForegroundPeriods(scanPeriod, sleepPeriod);
+                callback.success();
+            }
+        });
     }
 
-    private void setBackgroundScanCycles(long scanPeriod, long sleepPeriod, CallbackContext callback){
-        Messangi.getInstance().setBackgroundPeriods(scanPeriod, sleepPeriod);
-        callback.success();
+    private void setBackgroundScanCycles(final long scanPeriod, final long sleepPeriod, final CallbackContext callback){
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                Messangi.getInstance().setBackgroundPeriods(scanPeriod, sleepPeriod);
+                callback.success();
+            }
+        });
     }
+
     /*************************************************************************************
      *********************************  Subscriptions  ***********************************
      *************************************************************************************/

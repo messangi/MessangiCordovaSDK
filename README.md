@@ -92,9 +92,16 @@ After having base project set and working properly, go to the base project direc
     - Check and clean comments
 
 ## Version
-3.5.0
+3.6.0
 
 ## Changelog
+#### 3.6.0
+	Execute Settings methods on threads for better performance
+	Update MessangiSDK Android Library
+	  - Update Google Play Services Dependencies
+	  - Beacons and Geofences Working when app is not running
+	  - New Logs format
+      - Multiple bugs fixed
 #### 3.5.0
 	Added options to configure Beacon Scanner and Location capabilities on Android Devices
 	The options will work in runtime, not need restart the app
